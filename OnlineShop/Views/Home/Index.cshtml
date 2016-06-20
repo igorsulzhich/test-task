@@ -1,23 +1,14 @@
 ﻿@model OnlineShop.ProductService.Products[]
 @{
-    Layout = null;
+    ViewBag.Title = "Главная";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    @foreach (var i in Model)
-    {
-    <div> 
-        @i.Name <br/>
-        @i.Price <br />
-        @i.Description <br />
-    </div>
-    }
-</body>
-</html>
+@foreach (var i in Model)
+{
+<div> 
+    @i.Name <br/>
+    @i.Price <br />
+    @i.Description <br />
+</div>
+    <br/>
+}

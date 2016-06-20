@@ -131,6 +131,30 @@ namespace OnlineShop.ProductService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/GetAllProducts", ReplyAction="http://tempuri.org/IProductService/GetAllProductsResponse")]
         System.Threading.Tasks.Task<OnlineShop.ProductService.Products[]> GetAllProductsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/ProductNew", ReplyAction="http://tempuri.org/IProductService/ProductNewResponse")]
+        void ProductNew(OnlineShop.ProductService.Products item);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/ProductNew", ReplyAction="http://tempuri.org/IProductService/ProductNewResponse")]
+        System.Threading.Tasks.Task ProductNewAsync(OnlineShop.ProductService.Products item);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/Search", ReplyAction="http://tempuri.org/IProductService/SearchResponse")]
+        OnlineShop.ProductService.Products Search(System.Nullable<int> id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/Search", ReplyAction="http://tempuri.org/IProductService/SearchResponse")]
+        System.Threading.Tasks.Task<OnlineShop.ProductService.Products> SearchAsync(System.Nullable<int> id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/ProductUpdate", ReplyAction="http://tempuri.org/IProductService/ProductUpdateResponse")]
+        void ProductUpdate(OnlineShop.ProductService.Products item);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/ProductUpdate", ReplyAction="http://tempuri.org/IProductService/ProductUpdateResponse")]
+        System.Threading.Tasks.Task ProductUpdateAsync(OnlineShop.ProductService.Products item);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/ProductDelete", ReplyAction="http://tempuri.org/IProductService/ProductDeleteResponse")]
+        void ProductDelete(OnlineShop.ProductService.Products item);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/ProductDelete", ReplyAction="http://tempuri.org/IProductService/ProductDeleteResponse")]
+        System.Threading.Tasks.Task ProductDeleteAsync(OnlineShop.ProductService.Products item);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -166,6 +190,38 @@ namespace OnlineShop.ProductService {
         
         public System.Threading.Tasks.Task<OnlineShop.ProductService.Products[]> GetAllProductsAsync() {
             return base.Channel.GetAllProductsAsync();
+        }
+        
+        public void ProductNew(OnlineShop.ProductService.Products item) {
+            base.Channel.ProductNew(item);
+        }
+        
+        public System.Threading.Tasks.Task ProductNewAsync(OnlineShop.ProductService.Products item) {
+            return base.Channel.ProductNewAsync(item);
+        }
+        
+        public OnlineShop.ProductService.Products Search(System.Nullable<int> id) {
+            return base.Channel.Search(id);
+        }
+        
+        public System.Threading.Tasks.Task<OnlineShop.ProductService.Products> SearchAsync(System.Nullable<int> id) {
+            return base.Channel.SearchAsync(id);
+        }
+        
+        public void ProductUpdate(OnlineShop.ProductService.Products item) {
+            base.Channel.ProductUpdate(item);
+        }
+        
+        public System.Threading.Tasks.Task ProductUpdateAsync(OnlineShop.ProductService.Products item) {
+            return base.Channel.ProductUpdateAsync(item);
+        }
+        
+        public void ProductDelete(OnlineShop.ProductService.Products item) {
+            base.Channel.ProductDelete(item);
+        }
+        
+        public System.Threading.Tasks.Task ProductDeleteAsync(OnlineShop.ProductService.Products item) {
+            return base.Channel.ProductDeleteAsync(item);
         }
     }
 }

@@ -10,7 +10,6 @@ namespace OnlineShop.Controllers
     public class HomeController : Controller
     {
         // GET: Home
- 
         private ProductServiceClient psc = new ProductServiceClient();
 
         public ActionResult Index()

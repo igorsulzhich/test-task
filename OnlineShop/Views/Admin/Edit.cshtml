@@ -1,0 +1,12 @@
+﻿@{
+    ViewBag.Title = "Редактирование товара";
+}
+
+<h2>Редактирование продукта</h2>
+@Html.ValidationSummary("", new { @class = "results" })
+<hr />
+@using (Html.BeginForm("Edit", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.Partial("_form")
+}
+

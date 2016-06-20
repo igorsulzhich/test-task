@@ -11,13 +11,25 @@ namespace ShopService.Model
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Runtime.Serialization;
+
+    [DataContract]
     public partial class Products
     {
+        [DataMember]
         public int Id { get; set; }
+
+        [DataMember]
         public string Name { get; set; }
+
+        [DataMember]
         public double Price { get; set; }
+
+        [DataMember]
         public string Description { get; set; }
+
+        [DataMember]
         public string ImageLink { get; set; }
+
     }
 }

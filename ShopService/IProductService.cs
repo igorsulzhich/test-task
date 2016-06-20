@@ -13,5 +13,17 @@ namespace ShopService
     {
         [OperationContract]
         List<Products> GetAllProducts();
+
+        [OperationContract]
+        void ProductNew(Products item);
+
+        [OperationContract]
+        Products Search(int? id);
+
+        [OperationContract]
+        void ProductUpdate(Products item);
+
+        [OperationContract]
+        void ProductDelete(Products item);
     }
 }

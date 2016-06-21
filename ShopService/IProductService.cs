@@ -5,6 +5,8 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using ShopService.Model;
+using System.Web;
+using System.IO;
 
 namespace ShopService
 {
@@ -15,13 +17,16 @@ namespace ShopService
         List<Products> GetAllProducts();
 
         [OperationContract]
-        void ProductNew(Products item);
+        string FileImport(Stream file);
+
+        [OperationContract]
+        void ProductNew(Products item, string image);
 
         [OperationContract]
         Products Search(int? id);
 
         [OperationContract]
-        void ProductUpdate(Products item);
+        void ProductUpdate(Products item, string image);
 
         [OperationContract]
         void ProductDelete(Products item);

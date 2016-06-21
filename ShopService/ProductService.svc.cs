@@ -7,15 +7,23 @@ using System.Text;
 using System.Data.Entity;
 using ShopService.Repositories;
 using ShopService.Model;
+using System.Web;
+using System.IO;
 
 namespace ShopService
 {
     public class ProductService : IProductService
     {
         public List<Products> GetAllProducts() { return ProductRepository.GetAll(); }
-        public void ProductNew(Products item) { ProductRepository.Create(item); }
+
+        public string FileImport(Stream file) { return ProductRepository.ImportFile(file); }
+
+        public void ProductNew(Products item, string image) { ProductRepository.Create(item, image); }
+
         public Products Search(int? id) { return ProductRepository.Search(id); }
-        public void ProductUpdate(Products item) { ProductRepository.Edit(item); }
+
+        public void ProductUpdate(Products item, string upload) { ProductRepository.Edit(item, upload); }
+
         public void ProductDelete(Products item) { ProductRepository.Delete(item); }
     }
 }

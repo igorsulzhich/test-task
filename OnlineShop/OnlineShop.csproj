@@ -97,6 +97,9 @@
     <Content Include="Service References\ProductService\OnlineShop.ProductService.Products.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <None Include="Service References\ProductService\ProductService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\ProductService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>

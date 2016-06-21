@@ -2,13 +2,18 @@
 @{
     ViewBag.Title = "Главная";
 }
-
-@foreach (var i in Model)
+@if (Model.Count() != 0)
 {
-<div> 
-    @i.Name <br/>
-    @i.Price <br />
-    @i.Description <br />
-</div>
-    <br/>
+    foreach (var i in Model)
+    {
+        <div> 
+            @i.Name <br/>
+            @i.Price <br />
+            @i.Description <br />
+            @if (i.ImageLink != null)
+            {
+            <img class="" src="http://res.cloudinary.com/igorsulzhich/image/upload/@i.ImageLink"> }
+        </div>
+        <br/>
+    }
 }

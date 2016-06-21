@@ -132,11 +132,17 @@ namespace OnlineShop.ProductService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/GetAllProducts", ReplyAction="http://tempuri.org/IProductService/GetAllProductsResponse")]
         System.Threading.Tasks.Task<OnlineShop.ProductService.Products[]> GetAllProductsAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/ProductNew", ReplyAction="http://tempuri.org/IProductService/ProductNewResponse")]
-        void ProductNew(OnlineShop.ProductService.Products item);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/FileImport", ReplyAction="http://tempuri.org/IProductService/FileImportResponse")]
+        string FileImport(System.IO.Stream file);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/FileImport", ReplyAction="http://tempuri.org/IProductService/FileImportResponse")]
+        System.Threading.Tasks.Task<string> FileImportAsync(System.IO.Stream file);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/ProductNew", ReplyAction="http://tempuri.org/IProductService/ProductNewResponse")]
-        System.Threading.Tasks.Task ProductNewAsync(OnlineShop.ProductService.Products item);
+        void ProductNew(OnlineShop.ProductService.Products item, string image);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/ProductNew", ReplyAction="http://tempuri.org/IProductService/ProductNewResponse")]
+        System.Threading.Tasks.Task ProductNewAsync(OnlineShop.ProductService.Products item, string image);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/Search", ReplyAction="http://tempuri.org/IProductService/SearchResponse")]
         OnlineShop.ProductService.Products Search(System.Nullable<int> id);
@@ -145,10 +151,10 @@ namespace OnlineShop.ProductService {
         System.Threading.Tasks.Task<OnlineShop.ProductService.Products> SearchAsync(System.Nullable<int> id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/ProductUpdate", ReplyAction="http://tempuri.org/IProductService/ProductUpdateResponse")]
-        void ProductUpdate(OnlineShop.ProductService.Products item);
+        void ProductUpdate(OnlineShop.ProductService.Products item, string image);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/ProductUpdate", ReplyAction="http://tempuri.org/IProductService/ProductUpdateResponse")]
-        System.Threading.Tasks.Task ProductUpdateAsync(OnlineShop.ProductService.Products item);
+        System.Threading.Tasks.Task ProductUpdateAsync(OnlineShop.ProductService.Products item, string image);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/ProductDelete", ReplyAction="http://tempuri.org/IProductService/ProductDeleteResponse")]
         void ProductDelete(OnlineShop.ProductService.Products item);
@@ -192,12 +198,20 @@ namespace OnlineShop.ProductService {
             return base.Channel.GetAllProductsAsync();
         }
         
-        public void ProductNew(OnlineShop.ProductService.Products item) {
-            base.Channel.ProductNew(item);
+        public string FileImport(System.IO.Stream file) {
+            return base.Channel.FileImport(file);
         }
         
-        public System.Threading.Tasks.Task ProductNewAsync(OnlineShop.ProductService.Products item) {
-            return base.Channel.ProductNewAsync(item);
+        public System.Threading.Tasks.Task<string> FileImportAsync(System.IO.Stream file) {
+            return base.Channel.FileImportAsync(file);
+        }
+        
+        public void ProductNew(OnlineShop.ProductService.Products item, string image) {
+            base.Channel.ProductNew(item, image);
+        }
+        
+        public System.Threading.Tasks.Task ProductNewAsync(OnlineShop.ProductService.Products item, string image) {
+            return base.Channel.ProductNewAsync(item, image);
         }
         
         public OnlineShop.ProductService.Products Search(System.Nullable<int> id) {
@@ -208,12 +222,12 @@ namespace OnlineShop.ProductService {
             return base.Channel.SearchAsync(id);
         }
         
-        public void ProductUpdate(OnlineShop.ProductService.Products item) {
-            base.Channel.ProductUpdate(item);
+        public void ProductUpdate(OnlineShop.ProductService.Products item, string image) {
+            base.Channel.ProductUpdate(item, image);
         }
         
-        public System.Threading.Tasks.Task ProductUpdateAsync(OnlineShop.ProductService.Products item) {
-            return base.Channel.ProductUpdateAsync(item);
+        public System.Threading.Tasks.Task ProductUpdateAsync(OnlineShop.ProductService.Products item, string image) {
+            return base.Channel.ProductUpdateAsync(item, image);
         }
         
         public void ProductDelete(OnlineShop.ProductService.Products item) {

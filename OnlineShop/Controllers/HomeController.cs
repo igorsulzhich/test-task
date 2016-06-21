@@ -14,7 +14,8 @@ namespace OnlineShop.Controllers
 
         public ActionResult Index()
         {
-            return View(psc.GetAllProducts());
+            Products[] listProducts = psc.GetAllProducts();
+            return View(listProducts);
         }
     }
 }

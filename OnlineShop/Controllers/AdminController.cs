@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using OnlineShop.ProductService;
 using System.Net;
+using System.IO;
 
 namespace OnlineShop.Controllers
 {
@@ -26,11 +27,13 @@ namespace OnlineShop.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Products item)
+        public ActionResult Create(Products item, HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
             {
-                psc.ProductNew(item);
+                if (upload != null)
+                    psc.ProductNew(item, psc.FileImport(upload.InputStream));
+
                 return RedirectToAction("Index");
             }
             return View();
@@ -53,11 +56,16 @@ namespace OnlineShop.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Products item)
+        public ActionResult Edit(Products item, HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
             {
-                psc.ProductUpdate(item);
+                string publicId = null;
+
+                if (upload != null)
+                    publicId = psc.FileImport(upload.InputStream);
+
+                psc.ProductUpdate(item, publicId);
                 return RedirectToAction("Index");
             }
             return View();

@@ -5,6 +5,7 @@
       <xsd:import schemaLocation="http://localhost:53334/ProductService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:53334/ProductService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:53334/ProductService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ShopService.Model" />
+      <xsd:import schemaLocation="http://localhost:53334/ProductService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/Message" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IProductService_GetAllProducts_InputMessage">
@@ -12,6 +13,12 @@
   </wsdl:message>
   <wsdl:message name="IProductService_GetAllProducts_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllProductsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_FileImport_InputMessage">
+    <wsdl:part name="parameters" element="tns:FileImport" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_FileImport_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FileImportResponse" />
   </wsdl:message>
   <wsdl:message name="IProductService_ProductNew_InputMessage">
     <wsdl:part name="parameters" element="tns:ProductNew" />
@@ -42,6 +49,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IProductService/GetAllProducts" message="tns:IProductService_GetAllProducts_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProductService/GetAllProductsResponse" message="tns:IProductService_GetAllProducts_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="FileImport">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductService/FileImport" message="tns:IProductService_FileImport_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductService/FileImportResponse" message="tns:IProductService_FileImport_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="ProductNew">
       <wsdl:input wsaw:Action="http://tempuri.org/IProductService/ProductNew" message="tns:IProductService_ProductNew_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProductService/ProductNewResponse" message="tns:IProductService_ProductNew_OutputMessage" />
@@ -63,6 +74,15 @@
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="GetAllProducts">
       <soap:operation soapAction="http://tempuri.org/IProductService/GetAllProducts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FileImport">
+      <soap:operation soapAction="http://tempuri.org/IProductService/FileImport" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

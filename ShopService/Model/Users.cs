@@ -1,4 +1,4 @@
-namespace ShopService.Model
+﻿namespace ShopService.Model
 {
     using System;
     using System.Collections.Generic;
@@ -6,19 +6,14 @@ namespace ShopService.Model
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Products
+    public partial class Users
     {
         public int Id { get; set; }
 
         [Required]
-        public string Name { get; set; }
+        public string Login { get; set; }
 
-        public double Price { get; set; }
-
-        [Column(TypeName = "text")]
         [Required]
-        public string Description { get; set; }
-
-        public string ImageLink { get; set; }
+        public string Password { get; set; }
     }
 }

@@ -16,7 +16,7 @@ namespace ShopService
     {
         public List<Products> GetAllProducts() { return ProductRepository.GetAll(); }
 
-        public string FileImport(Stream file) { return ProductRepository.ImportFile(file); }
+        public string FileImport(Stream file) { return CloudinaryRepository.ImportFile(file); }
 
         public void ProductNew(Products item, string image) { ProductRepository.Create(item, image); }
 
@@ -25,5 +25,7 @@ namespace ShopService
         public void ProductUpdate(Products item, string upload) { ProductRepository.Edit(item, upload); }
 
         public void ProductDelete(Products item) { ProductRepository.Delete(item); }
+
+        public Users Check(Users item) { return AuthenticationRepository.Check(item); }
     }
 }

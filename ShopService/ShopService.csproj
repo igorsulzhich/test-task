@@ -83,43 +83,22 @@
     <Content Include="App_Data\DbShop_log.ldf">
       <DependentUpon>DbShop.mdf</DependentUpon>
     </Content>
-    <Content Include="Model\WcfEntityModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>WcfEntityModel.edmx</DependentUpon>
-      <LastGenOutput>WcfEntityModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Model\WcfEntityModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>WcfEntityModel.edmx</DependentUpon>
-      <LastGenOutput>WcfEntityModel.cs</LastGenOutput>
-    </Content>
     <Content Include="ProductService.svc" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IProductService.cs" />
-    <Compile Include="Model\Products.cs">
-      <DependentUpon>WcfEntityModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\WcfEntityModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WcfEntityModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\WcfEntityModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WcfEntityModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\WcfEntityModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WcfEntityModel.edmx</DependentUpon>
-    </Compile>
+    <Compile Include="Model\Products.cs" />
+    <Compile Include="Model\Users.cs" />
+    <Compile Include="Model\WcfDataModel.cs" />
     <Compile Include="ProductService.svc.cs">
       <DependentUpon>ProductService.svc</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\AuthenticationRepository.cs" />
+    <Compile Include="Repositories\CloudinaryRepository.cs" />
     <Compile Include="Repositories\ProductRepository.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -127,13 +106,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-    <EntityDeploy Include="Model\WcfEntityModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>WcfEntityModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Model\WcfEntityModel.edmx.diagram">
-      <DependentUpon>WcfEntityModel.edmx</DependentUpon>
-    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

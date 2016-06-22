@@ -122,6 +122,83 @@ namespace OnlineShop.ProductService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Users", Namespace="http://schemas.datacontract.org/2004/07/ShopService.Model")]
+    [System.SerializableAttribute()]
+    public partial class Users : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LoginField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PasswordField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Login {
+            get {
+                return this.LoginField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LoginField, value) != true)) {
+                    this.LoginField = value;
+                    this.RaisePropertyChanged("Login");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Password {
+            get {
+                return this.PasswordField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PasswordField, value) != true)) {
+                    this.PasswordField = value;
+                    this.RaisePropertyChanged("Password");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ProductService.IProductService")]
     public interface IProductService {
@@ -161,6 +238,12 @@ namespace OnlineShop.ProductService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/ProductDelete", ReplyAction="http://tempuri.org/IProductService/ProductDeleteResponse")]
         System.Threading.Tasks.Task ProductDeleteAsync(OnlineShop.ProductService.Products item);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/Check", ReplyAction="http://tempuri.org/IProductService/CheckResponse")]
+        OnlineShop.ProductService.Users Check(OnlineShop.ProductService.Users item);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/Check", ReplyAction="http://tempuri.org/IProductService/CheckResponse")]
+        System.Threading.Tasks.Task<OnlineShop.ProductService.Users> CheckAsync(OnlineShop.ProductService.Users item);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -236,6 +319,14 @@ namespace OnlineShop.ProductService {
         
         public System.Threading.Tasks.Task ProductDeleteAsync(OnlineShop.ProductService.Products item) {
             return base.Channel.ProductDeleteAsync(item);
+        }
+        
+        public OnlineShop.ProductService.Users Check(OnlineShop.ProductService.Users item) {
+            return base.Channel.Check(item);
+        }
+        
+        public System.Threading.Tasks.Task<OnlineShop.ProductService.Users> CheckAsync(OnlineShop.ProductService.Users item) {
+            return base.Channel.CheckAsync(item);
         }
     }
 }

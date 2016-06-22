@@ -9,11 +9,12 @@ using System.IO;
 
 namespace OnlineShop.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
         // GET: Admin
         private ProductServiceClient psc = new ProductServiceClient();
-
+        
         public ActionResult Index()
         {
             return View(psc.GetAllProducts());
@@ -70,7 +71,6 @@ namespace OnlineShop.Controllers
             }
             return View();
         }
-
 
         public ActionResult Delete(int? id)
         {

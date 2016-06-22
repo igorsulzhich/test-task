@@ -4,18 +4,13 @@ using System.Linq;
 using System.Web;
 using ShopService.Model;
 using System.Data.Entity;
-using CloudinaryDotNet;
-using CloudinaryDotNet.Actions;
 using System.IO;
 
 namespace ShopService.Repositories
 {
     public class ProductRepository
     {
-        private static ShopEntities db = new ShopEntities();
-
-        private static Cloudinary cloudinary = new Cloudinary(
-            new Account("igorsulzhich", "232533624141977", "rj36eT3xv2EMZgPQ9hhM8c2pdXY"));
+        private static WcfDataModel db = new WcfDataModel();   
 
         public static List<Products> GetAll()
         {
@@ -26,19 +21,6 @@ namespace ShopService.Repositories
         {
             Products item = db.Products.Find(id);
             return item;
-        }
-
-        public static string ImportFile(Stream item)
-        {
-            var uploadParams = new ImageUploadParams()
-            {
-                File = new FileDescription("name", item),
-                Format = "jpg",
-                Folder = "online-shop"
-            };
-
-            string path = cloudinary.Upload(uploadParams).PublicId;
-            return path;
         }
 
         public static void Create(Products item, string image)
@@ -54,7 +36,7 @@ namespace ShopService.Repositories
 
             if (image != null)
             {
-                cloudinary.DeleteResources(pr.ImageLink);
+                CloudinaryRepository.DeleteFile(pr.ImageLink);
                 pr.ImageLink = image;
             }
 
@@ -68,7 +50,7 @@ namespace ShopService.Repositories
         public static void Delete(Products item)
         {
             Products pr = db.Products.Single(p => p.Id == item.Id);
-            cloudinary.DeleteResources(pr.ImageLink);
+            CloudinaryRepository.DeleteFile(pr.ImageLink);
             db.Products.Remove(pr);
             db.SaveChanges();
         }

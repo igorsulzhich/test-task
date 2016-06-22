@@ -30,5 +30,8 @@ namespace ShopService
 
         [OperationContract]
         void ProductDelete(Products item);
+
+        [OperationContract]
+        Users Check(Users item);
     }
 }

@@ -1,0 +1,30 @@
+﻿@model OnlineShop.ProductService.Users
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head lang="ru">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width" />
+    <title>Login - Admin</title>
+
+</head>
+<body>
+    <div class="login">
+        @Html.ValidationSummary("", new { @class = "results" })
+        @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+        {
+            <div class="form-group">
+                @Html.EditorFor(model => model.Login, new { htmlAttributes = new { @class = "form-control", @placeholder = "Login" } })
+            </div>
+            <div class="form-group">
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Password" } })
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-default" value="Войти" />
+            </div>
+        }
+    </div>
+</body>
+</html>

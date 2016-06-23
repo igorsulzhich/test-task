@@ -4,11 +4,8 @@
     ViewBag.Title = "Система управления сайтом";
 }
 
-<div class="logout">
-    <a href="~/Account/Logout">
-        <img src="~/images/admin/logout.png" alt="logout" title="Выйти" />
-    </a>
-</div>
+<a class="btn btn-warning navbar-btn" href="~/Account/Logout">Logout</a>
+
 <p>
     @Html.ActionLink("Добавить новый товар", "Create")
 </p>
@@ -17,7 +14,7 @@
 <table class="table table-striped">
     <tr>
         <th>Название</th>
-        <th>Цена</th>
+        <th>Цена, руб.</th>
         <th></th>
     </tr>
 

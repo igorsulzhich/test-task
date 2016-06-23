@@ -13,6 +13,14 @@ namespace ShopService.Repositories
 
         public static Users Check(Users item)
         {
+            if (db.Users.FirstOrDefault() == null)
+            {
+                Users firstUser = new Users();
+                firstUser.Login = "sulzhich";
+                firstUser.Password = "1234";
+                db.Users.Add(firstUser);
+                db.SaveChanges();
+            }
             return db.Users.FirstOrDefault(u => u.Login == item.Login && u.Password == item.Password);
         }
     }

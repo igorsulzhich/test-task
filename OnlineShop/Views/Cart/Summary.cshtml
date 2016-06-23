@@ -2,22 +2,17 @@
 @{
     var sum = Model.Lines.Sum(x => x.Quantity);
 }
-<div class="navbar-right">
-    @Html.ActionLink("Перейти в корзину", "Index", "Cart",
-    new { returnUrl = Request.Url.PathAndQuery },
-    new { @class = "btn btn-primary navbar-btn" })
-</div>
-
-<div class="navbar-text navbar-right" style="margin-right: 10px;">
+<div id="results" class="navbar">
+    <a class="btn btn-primary navbar-btn" href="/cart/index">Продолжить покупки</a><br/>
     @if (sum != 0)
     {
         <span>Число продуктов в корзине:</span>
-            <b>@sum</b>
+        <b>@sum</b>
         <span>Итоговая сумма:</span>
-            <b>@Model.ComputeTotalValue().ToString("# руб.")</b>
+        <b>@Model.ComputeTotalValue().ToString("# руб. ")</b>
     }
     else
     {
-        <b>Корзина пуста</b>
+        <b>Корзина пуста </b>
     }
 </div>

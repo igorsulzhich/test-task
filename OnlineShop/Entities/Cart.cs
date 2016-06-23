@@ -8,7 +8,7 @@ namespace OnlineShop.Entities
 {
     public class Cart
     {
-        private List<CartLine> lineCollection = new List<CartLine>();
+        public List<CartLine> lineCollection = new List<CartLine>();
 
         public void AddItem(Products product, int quantity)
         {

@@ -1,31 +1,6 @@
-﻿@using PerpetuumSoft.Knockout
-@model OnlineShop.ProductService.Products[]
-@{
+﻿@{
     ViewBag.Title = "Главная";
 }
 
-@if (Model.Count() != 0)
-{
-    foreach (var i in Model)
-    {
-        <div class="col-md-4"> 
-            <div class="pull-right">
-                <h4>@i.Name</h4> 
-                <p>Цена: @i.Price, руб.</p>
-                <p>Описание:<br/>@i.Description </p>
-                @using (Html.BeginForm("AddToCart", "Cart"))
-                {
-                    <div class="pull-right">
-                        @Html.Hidden("productId", i.Id)
-                        @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
-                        <input type="submit" class="btn btn-success btn-sm pull-left" value="Добавить в корзину" />
-                    </div>
-                }
-            </div>
-            @if (i.ImageLink != null)
-            {
-            <img class="pull-left" src="http://res.cloudinary.com/igorsulzhich/image/upload/c_fill,w_150,h_166/@i.ImageLink"> } <br />
-            
-        </div>
-    }
-}
+@Html.Action("Summary", "Cart")
+@Html.Action("GetAll", "Home")

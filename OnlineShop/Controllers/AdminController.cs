@@ -6,7 +6,6 @@ using System.Web.Mvc;
 using OnlineShop.ProductService;
 using System.Net;
 using System.IO;
-using PerpetuumSoft.Knockout;
 
 namespace OnlineShop.Controllers
 {

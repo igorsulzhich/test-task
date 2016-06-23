@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using OnlineShop.ProductService;
-using PerpetuumSoft.Knockout;
 
 namespace OnlineShop.Controllers
 {
@@ -15,8 +14,13 @@ namespace OnlineShop.Controllers
 
         public ActionResult Index()
         {
+            return View();
+        }
+
+        public ActionResult GetAll()
+        {
             Products[] listProducts = psc.GetAllProducts();
-            return View(listProducts);
+            return PartialView(listProducts);
         }
     }
 }

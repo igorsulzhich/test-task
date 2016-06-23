@@ -13,16 +13,12 @@ namespace OnlineShop.Controllers
     {
         private ProductServiceClient psc = new ProductServiceClient();
 
-        public ViewResult Index(Cart cart, string returnUrl)
+        public ViewResult Index()
         {
-            return View(new CartIndexViewModel
-            {
-                Cart = cart,
-                ReturnUrl = returnUrl
-            });
+            return View();
         }
 
-        public RedirectToRouteResult AddToCart(Cart cart, int productId, string returnUrl)
+        public ActionResult AddToCart(Cart cart, int productId)
         {
             Products pr = psc.Search(productId);
 
@@ -30,10 +26,10 @@ namespace OnlineShop.Controllers
             {
                 cart.AddItem(pr, 1);
             }
-            return RedirectToAction("Index", "Home", new { returnUrl });
+            return RedirectToAction("Summary");
         }
 
-        public RedirectToRouteResult RemoveFromCart(Cart cart, int productId, string returnUrl)
+        public RedirectToRouteResult RemoveFromCart(Cart cart, int productId)
         {
             Products pr = psc.Search(productId);
 
@@ -41,12 +37,20 @@ namespace OnlineShop.Controllers
             {
                 cart.RemoveLine(pr);
             }
-            return RedirectToAction("Index", new { returnUrl });
+            return RedirectToAction("Purchases");
         }
 
         public PartialViewResult Summary(Cart cart)
         {
             return PartialView(cart);
+        }
+
+        public ActionResult Purchases(Cart cart)
+        {
+            return PartialView(new CartIndexViewModel
+            {
+                Cart = cart
+            });
         }
     }
 }

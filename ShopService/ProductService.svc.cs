@@ -16,7 +16,7 @@ namespace ShopService
     {
         public List<Products> GetAllProducts() { return ProductRepository.GetAll(); }
 
-        public string FileImport(Stream file) { return CloudinaryRepository.ImportFile(file); }
+        public string FileImport(Stream files) { return CloudinaryRepository.ImportFile(files); }
 
         public void ProductNew(Products item, string image) { ProductRepository.Create(item, image); }
 

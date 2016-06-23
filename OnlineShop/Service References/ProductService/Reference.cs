@@ -210,10 +210,10 @@ namespace OnlineShop.ProductService {
         System.Threading.Tasks.Task<OnlineShop.ProductService.Products[]> GetAllProductsAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/FileImport", ReplyAction="http://tempuri.org/IProductService/FileImportResponse")]
-        string FileImport(System.IO.Stream file);
+        string FileImport(System.IO.Stream files);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/FileImport", ReplyAction="http://tempuri.org/IProductService/FileImportResponse")]
-        System.Threading.Tasks.Task<string> FileImportAsync(System.IO.Stream file);
+        System.Threading.Tasks.Task<string> FileImportAsync(System.IO.Stream files);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/ProductNew", ReplyAction="http://tempuri.org/IProductService/ProductNewResponse")]
         void ProductNew(OnlineShop.ProductService.Products item, string image);
@@ -281,12 +281,12 @@ namespace OnlineShop.ProductService {
             return base.Channel.GetAllProductsAsync();
         }
         
-        public string FileImport(System.IO.Stream file) {
-            return base.Channel.FileImport(file);
+        public string FileImport(System.IO.Stream files) {
+            return base.Channel.FileImport(files);
         }
         
-        public System.Threading.Tasks.Task<string> FileImportAsync(System.IO.Stream file) {
-            return base.Channel.FileImportAsync(file);
+        public System.Threading.Tasks.Task<string> FileImportAsync(System.IO.Stream files) {
+            return base.Channel.FileImportAsync(files);
         }
         
         public void ProductNew(OnlineShop.ProductService.Products item, string image) {

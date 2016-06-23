@@ -15,7 +15,6 @@ namespace ShopService.Model
 
         public double Price { get; set; }
 
-        [Column(TypeName = "text")]
         [Required]
         public string Description { get; set; }
 

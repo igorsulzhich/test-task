@@ -17,9 +17,6 @@ namespace ShopService.Model
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Products>()
-                .Property(e => e.Description)
-                .IsUnicode(false);
         }
     }
 }

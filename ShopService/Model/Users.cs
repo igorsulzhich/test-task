@@ -1,4 +1,4 @@
-﻿namespace ShopService.Model
+namespace ShopService.Model
 {
     using System;
     using System.Collections.Generic;

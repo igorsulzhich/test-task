@@ -17,7 +17,7 @@ namespace ShopService
         List<Products> GetAllProducts();
 
         [OperationContract]
-        string FileImport(Stream file);
+        string FileImport(Stream files);
 
         [OperationContract]
         void ProductNew(Products item, string image);

@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using OnlineShop.ProductService;
 using System.Net;
 using System.IO;
+using PerpetuumSoft.Knockout;
 
 namespace OnlineShop.Controllers
 {
@@ -27,7 +28,6 @@ namespace OnlineShop.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Create(Products item, HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
@@ -56,7 +56,6 @@ namespace OnlineShop.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Edit(Products item, HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
@@ -72,14 +71,10 @@ namespace OnlineShop.Controllers
             return View();
         }
 
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int id)
         {
-            if (ModelState.IsValid)
-            {
-                psc.ProductDelete(psc.Search(id));
-                return RedirectToAction("Index");
-            }
-            return View();
+            psc.ProductDelete(psc.Search(id));
+            return RedirectToAction("Index");
         }
     }
 }

@@ -1,0 +1,46 @@
+﻿@model OnlineShop.Models.CartIndexViewModel
+@{
+    ViewBag.Title = "Корзина";
+}
+
+<h3>Ваша корзина</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Количество</th>
+            <th>Название</th>
+            <th>Цена</th>
+            <th>Общая цена</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var line in Model.Cart.Lines)
+        {
+            <tr>
+                <td class="text-left">@line.Quantity</td>
+                <td class="text-left">@line.Product.Name</td>
+                <td class="text-left">@line.Product.Price.ToString("# руб")</td>
+                <td class="text-left">
+                    @((line.Quantity * line.Product.Price).ToString("# руб"))
+                </td>
+                <td>
+                    @using (Html.BeginForm("RemoveFromCart", "Cart"))
+                    {
+                        @Html.Hidden("productId", line.Product.Id)
+                        @Html.HiddenFor(x => x.ReturnUrl)
+                        <input class="btn btn-sm btn-danger" type="submit" value="Удалить" />
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr><td colspan="5"></td></tr>
+    </tfoot>
+</table>
+
+<h4 class="text-center">Итоговая сумма: @Model.Cart.ComputeTotalValue().ToString("# руб")</h4>
+<div class="text-center">
+    <a class="btn btn-primary" href="@Model.ReturnUrl">Продолжить покупки</a>
+</div>

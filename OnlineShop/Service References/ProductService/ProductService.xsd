@@ -17,7 +17,7 @@
   <xs:element name="FileImport">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.microsoft.com/Message" name="file" type="q2:StreamBody" />
+        <xs:element xmlns:q2="http://schemas.microsoft.com/Message" name="files" type="q2:StreamBody" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

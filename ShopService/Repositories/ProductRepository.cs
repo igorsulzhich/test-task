@@ -15,9 +15,7 @@ namespace ShopService.Repositories
         public static List<Products> GetAll()
         {
             var model = db.Products.OrderByDescending(key => key.Id).ToList();
-            if(model != null)
-                return db.Products.OrderByDescending(key => key.Id).ToList();
-            return null;
+            return model != null ? model : null;
         }
 
         public static Products Search(int? id)

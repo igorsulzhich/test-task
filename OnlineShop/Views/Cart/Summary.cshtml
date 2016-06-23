@@ -1,13 +1,23 @@
 ﻿@model OnlineShop.Entities.Cart
-
+@{
+    var sum = Model.Lines.Sum(x => x.Quantity);
+}
 <div class="navbar-right">
-    @Html.ActionLink("Заказать", "Index", "Cart",
+    @Html.ActionLink("Перейти в корзину", "Index", "Cart",
     new { returnUrl = Request.Url.PathAndQuery },
-    new { @class = "btn btn-default navbar-btn" })
+    new { @class = "btn btn-primary navbar-btn" })
 </div>
 
 <div class="navbar-text navbar-right" style="margin-right: 10px;">
-    <b>Ваша корзина:</b>
-    @Model.Lines.Sum(x => x.Quantity) прод.,
-    @Model.ComputeTotalValue().ToString("# руб")
+    @if (sum != 0)
+    {
+        <span>Число продуктов в корзине:</span>
+            <b>@sum</b>
+        <span>Итоговая сумма:</span>
+            <b>@Model.ComputeTotalValue().ToString("# руб.")</b>
+    }
+    else
+    {
+        <b>Корзина пуста</b>
+    }
 </div>

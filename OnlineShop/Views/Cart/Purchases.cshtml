@@ -34,11 +34,13 @@
         <tr><td colspan="5"></td></tr>
     </tfoot>
 </table>
-    @if (Model.Cart.Lines.Count() != 0)
+    @if (Model.Cart.Lines.FirstOrDefault() != null)
     {
         using (Ajax.BeginForm("removeAllCart", "cart", new AjaxOptions { UpdateTargetId = "cartresult" }))
         {
-            <input class="btn btn-sm btn-danger" type="submit" value="Очистить корзину" />
+            <input class="btn btn-danger" type="submit" value="Очистить корзину" />
         }
+        <br/>
+        <input class="btn btn-success" type="submit" value="Оформить заказ" />
     }
 </div>

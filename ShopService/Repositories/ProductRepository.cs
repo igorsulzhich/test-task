@@ -12,6 +12,10 @@ namespace ShopService.Repositories
         {
             try
             {
+                if (db.Products.FirstOrDefault() == null)
+                {
+                    BasicContent();
+                }
                 var model = db.Products.OrderByDescending(key => key.Id).ToList();
                 return model;
             }
@@ -38,6 +42,7 @@ namespace ShopService.Repositories
         {
             try
             {
+
                 item.ImageLink = image;
                 db.Products.Add(item);
                 db.SaveChanges();
@@ -90,6 +95,32 @@ namespace ShopService.Repositories
             {
                 return false;
             }
+        }
+
+        private static void BasicContent()
+        {
+            db.Products.Add(new Products
+            {
+                Name = "Телефон",
+                Price = 350,
+                Description = "Телефон обыкновенный",
+                ImageLink = "telefon_hudmhv"
+            });
+            db.Products.Add(new Products
+            {
+                Name = "Телевизор",
+                Price = 700,
+                Description = "Черный телевизор",
+                ImageLink = "televizor_jjk5kc"
+            });
+            db.Products.Add(new Products
+            {
+                Name = "Ноутбук",
+                Price = 1200,
+                Description = "Хороший ноутбук",
+                ImageLink = "laptop_cepzim"
+            });
+            db.SaveChanges();
         }
     }
 }

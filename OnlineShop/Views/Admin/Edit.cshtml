@@ -5,8 +5,12 @@
 <h2>Редактирование продукта</h2>
 @Html.ValidationSummary("", new { @class = "results" })
 <hr />
-@using (Html.BeginForm("Edit", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("edit", "admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.Partial("_form")
+
+    <input type="file" name="upload" /><br />
+    <input type="submit" class="btn btn-default" value="Редактировать" /> 
+    @Html.ActionLink("Отмена", "index")
 }
 

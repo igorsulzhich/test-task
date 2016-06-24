@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using ShopService.Model;
-using System.Data.Entity;
-using System.IO;
 
 namespace ShopService.Repositories
 {
@@ -14,46 +10,86 @@ namespace ShopService.Repositories
 
         public static List<Products> GetAll()
         {
-            var model = db.Products.OrderByDescending(key => key.Id).ToList();
-            return model != null ? model : null;
+            try
+            {
+                var model = db.Products.OrderByDescending(key => key.Id).ToList();
+                return model;
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         public static Products Search(int? id)
         {
-            Products item = db.Products.Find(id);
-            return item;
-        }
-
-        public static void Create(Products item, string image)
-        {
-            item.ImageLink = image;
-            db.Products.Add(item);
-            db.SaveChanges();
-        }
-
-        public static void Edit(Products item, string image)
-        {
-            Products pr = db.Products.Single(p => p.Id == item.Id);
-
-            if (image != null)
+            try
             {
-                CloudinaryRepository.DeleteFile(pr.ImageLink);
-                pr.ImageLink = image;
+                Products item = db.Products.Find(id);
+                return item;
             }
-
-            pr.Name = item.Name;
-            pr.Price = item.Price;
-            pr.Description = item.Description;
-
-            db.SaveChanges();
+            catch
+            {
+                return null;
+            }
         }
 
-        public static void Delete(Products item)
+        public static bool Create(Products item, string image)
         {
-            Products pr = db.Products.Single(p => p.Id == item.Id);
-            CloudinaryRepository.DeleteFile(pr.ImageLink);
-            db.Products.Remove(pr);
-            db.SaveChanges();
+            try
+            {
+                item.ImageLink = image;
+                db.Products.Add(item);
+                db.SaveChanges();
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public static bool Edit(Products item, string image)
+        {
+            try
+            {
+                Products pr = db.Products.Single(p => p.Id == item.Id);
+
+                if (image != null)
+                {
+                    CloudinaryRepository.DeleteFile(pr.ImageLink);
+                    pr.ImageLink = image;
+                }
+
+                pr.Name = item.Name;
+                pr.Price = item.Price;
+                pr.Description = item.Description;
+                db.SaveChanges();
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public static bool Delete(Products item)
+        {
+            try
+            {
+                Products pr = db.Products.Single(p => p.Id == item.Id);
+                CloudinaryRepository.DeleteFile(pr.ImageLink);
+                db.Products.Remove(pr);
+                db.SaveChanges();
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

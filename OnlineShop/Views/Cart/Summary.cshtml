@@ -3,7 +3,7 @@
     var sum = Model.Lines.Sum(x => x.Quantity);
 }
 <div id="results" class="navbar">
-    <a class="btn btn-primary navbar-btn" href="/cart/index">Продолжить покупки</a><br/>
+    <a class="btn btn-primary navbar-btn" href="/cart/index">Корзина</a><br/>
     @if (sum != 0)
     {
         <span>Число продуктов в корзине:</span>

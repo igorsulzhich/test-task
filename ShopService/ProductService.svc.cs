@@ -18,13 +18,13 @@ namespace ShopService
 
         public string FileImport(Stream files) { return CloudinaryRepository.ImportFile(files); }
 
-        public void ProductNew(Products item, string image) { ProductRepository.Create(item, image); }
+        public bool ProductNew(Products item, string image) { return ProductRepository.Create(item, image); }
 
         public Products Search(int? id) { return ProductRepository.Search(id); }
 
-        public void ProductUpdate(Products item, string upload) { ProductRepository.Edit(item, upload); }
+        public bool ProductUpdate(Products item, string upload) { return ProductRepository.Edit(item, upload); }
 
-        public void ProductDelete(Products item) { ProductRepository.Delete(item); }
+        public bool ProductDelete(Products item) { return ProductRepository.Delete(item); }
 
         public Users Check(Users item) { return AuthenticationRepository.Check(item); }
     }

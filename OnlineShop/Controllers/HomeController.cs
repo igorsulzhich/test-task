@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using OnlineShop.ProductService;
 
 namespace OnlineShop.Controllers
 {
     public class HomeController : Controller
     {
-        // GET: Home
         private ProductServiceClient psc = new ProductServiceClient();
 
         public ActionResult Index()
@@ -17,6 +12,7 @@ namespace OnlineShop.Controllers
             return View();
         }
 
+        [ChildActionOnly]
         public ActionResult GetAll()
         {
             Products[] listProducts = psc.GetAllProducts();

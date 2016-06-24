@@ -19,6 +19,7 @@ namespace OnlineShop
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             ModelBinders.Binders.Add(typeof(Cart), new CartModelBinder());
+            BundleTable.EnableOptimizations = true;
         }
     }
 }

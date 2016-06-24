@@ -13,7 +13,7 @@ namespace OnlineShop.App_Start
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationType = "ApplicationCookie",
-                LoginPath = new PathString("/Account/Login"),
+                LoginPath = new PathString("/account/login"),
             });
         }
     }

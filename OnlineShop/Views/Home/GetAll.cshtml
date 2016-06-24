@@ -9,7 +9,7 @@
                 <h4>@i.Name</h4>
                 <p>Цена: @i.Price руб.</p>
                 <p>Описание:<br />@i.Description </p>
-                @using (Ajax.BeginForm("AddToCart", "Cart", new AjaxOptions { UpdateTargetId = "results" }))
+                @using (Ajax.BeginForm("addToCart", "cart", new AjaxOptions { UpdateTargetId = "results" }))
                 {
                     <div class="pull-right">
                         @Html.Hidden("productId", i.Id)

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using ShopService.Model;
-using CloudinaryDotNet;
+﻿using CloudinaryDotNet;
 using CloudinaryDotNet.Actions;
 using System.IO;
 
@@ -16,19 +11,34 @@ namespace ShopService.Repositories
 
         public static string ImportFile(Stream item)
         {
-            var uploadParams = new ImageUploadParams()
+            try
             {
-                File = new FileDescription("name", item),
-                Format = "jpg",
-                Folder = "online-shop"
-            };
+                var uploadParams = new ImageUploadParams()
+                {
+                    File = new FileDescription("name", item),
+                    Format = "jpg",
+                    Folder = "online-shop"
+                };
 
-            return cloudinary.Upload(uploadParams).PublicId;
+                return cloudinary.Upload(uploadParams).PublicId;
+            }
+            catch
+            {
+                return null;
+            }
         }
 
-        public static void DeleteFile(string publicId)
+        public static bool DeleteFile(string publicId)
         {
-            cloudinary.DeleteResources(publicId);
+            try
+            {
+                cloudinary.DeleteResources(publicId);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

@@ -23,8 +23,8 @@
             <td>@Html.DisplayFor(model => p.Name)</td>
             <td>@Html.DisplayFor(model => p.Price)</td>
             <td>
-                <a href="@Url.Action("Edit", "Admin", new { id = p.Id })">Редактировать</a> |
-                <a href="@Url.Action("Delete", "Admin", new { id = p.Id })">Удалить</a>
+                <a href="@Url.Action("edit", "admin", new { id = p.Id })">Редактировать</a> |
+                <a href="@Url.Action("delete", "admin", new { id = p.Id })">Удалить</a>
             </td>
         </tr>
     }

@@ -1,22 +1,17 @@
-﻿<!DOCTYPE html>
-@using System.Web.Optimization;
+﻿@using System.Web.Optimization;
+<!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title - Online-Shop</title>
-    <link href="~/Content/bootstrap.css" rel="stylesheet" />
-    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
     @Styles.Render("~/content/bootstrap")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/ajax")
 </head>
 <body>
-
     <div class="navbar" style="border-radius: 0; border-bottom: 1px solid #808080;" role="navigation">
         <div class="container">
             <a class="navbar-brand" style="color: #808080;" href="/">Online-Shop</a>
-            <a class="btn navbar-btn" href="/admin">Login</a>
-            
+            <a class="btn navbar-btn" href="/admin">Login</a> 
         </div>
     </div>
     <div class="container">

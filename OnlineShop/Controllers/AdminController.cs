@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Web;
 using System.Web.Mvc;
 using OnlineShop.ProductService;
 using System.Net;
-using System.IO;
 
 namespace OnlineShop.Controllers
 {
     [Authorize]
     public class AdminController : Controller
     {
-        // GET: Admin
         private ProductServiceClient psc = new ProductServiceClient();
         
         public ActionResult Index()
@@ -70,7 +65,8 @@ namespace OnlineShop.Controllers
             return View();
         }
 
-        public ActionResult Delete(int id)
+        [ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int id)
         {
             psc.ProductDelete(psc.Search(id));
             return RedirectToAction("Index");

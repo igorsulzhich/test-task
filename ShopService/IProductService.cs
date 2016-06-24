@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Serialization;
 using System.ServiceModel;
-using System.Text;
 using ShopService.Model;
-using System.Web;
 using System.IO;
 
 namespace ShopService
@@ -20,16 +17,16 @@ namespace ShopService
         string FileImport(Stream files);
 
         [OperationContract]
-        void ProductNew(Products item, string image);
+        bool ProductNew(Products item, string image);
 
         [OperationContract]
         Products Search(int? id);
 
         [OperationContract]
-        void ProductUpdate(Products item, string image);
+        bool ProductUpdate(Products item, string image);
 
         [OperationContract]
-        void ProductDelete(Products item);
+        bool ProductDelete(Products item);
 
         [OperationContract]
         Users Check(Users item);

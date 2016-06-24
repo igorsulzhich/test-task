@@ -1,6 +1,6 @@
 ﻿@model OnlineShop.Models.CartIndexViewModel
-
-<table id="cartresult" class="table">
+<div id="cartresult">
+<table class="table">
     <thead>
         <tr>
             <th>Количество</th>
@@ -34,3 +34,11 @@
         <tr><td colspan="5"></td></tr>
     </tfoot>
 </table>
+    @if (Model.Cart.Lines.Count() != 0)
+    {
+        using (Ajax.BeginForm("removeAllCart", "cart", new AjaxOptions { UpdateTargetId = "cartresult" }))
+        {
+            <input class="btn btn-sm btn-danger" type="submit" value="Очистить корзину" />
+        }
+    }
+</div>

@@ -38,6 +38,13 @@ namespace OnlineShop.Controllers
             return RedirectToAction("Purchases");
         }
 
+        [HttpPost, ActionName("RemoveAllCart")]
+        public RedirectToRouteResult DeleteAll(Cart cart)
+        {
+            cart.lineCollection.Clear();
+            return RedirectToAction("Purchases");
+        }
+
         public PartialViewResult Summary(Cart cart)
         {
             return PartialView(cart);
